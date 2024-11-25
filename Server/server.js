@@ -1,8 +1,12 @@
 import express from "express";
 import { monsterSchema } from "./zodSchemas/monsterSchema.js";
+import { connectToDB } from "./database/connectToDB.js";
+import { Monster } from "./database/models/monsterModel.js";
 
 const app = express();
 const port = 3000;
+
+connectToDB();
 
 //testdata
 const monsters = [
@@ -31,32 +35,39 @@ const monsters = [
 app.use(express.json());
 
 //hämta alla monster
-app.get("/", (req, res) => {
-  res.send(monsters);
+app.get("/", async (req, res) => {
+ try {
+  const monsters = await Monster.find(); // Hämta alla monster från MongoDB
+  res.status(200).json(monsters); // Skicka tillbaka monsters som JSON
+ } catch (error) {
+  res.status(500).json({ message: "Failed to fetch monsters", error: err });
+ }
 });
 
-//lägg till monster
-app.post("/", (req, res) => {
-
-  //Använd safeParse för att validera indatan
+// POST-rutt för att lägga till ett nytt monster i MongoDB
+app.post("/", async (req, res) => {
+  // Validera inkommande data med Zod-schemat
   const result = monsterSchema.safeParse(req.body);
 
   if (result.success) {
-    //Om valideringen lyckades, lägg till den nya resursen i monster-arrayen
-    monsters.push(result.data)
+    try {
+      // Skapa och spara det nya monstret i databasen
+      const newMonster = new Monster(result.data);
+      await newMonster.save(); // Spara i MongoDB
 
-    //Ge tillbaka (visa i ThunderClient) resursen med status 201
-    res.status(201).json({
-      message: "Datan var giltig och är nu sparad!",
-      data: result.data,
-    });
+      res.status(201).json({
+        message: "Monster saved to database!",
+        data: result.data,
+      });
+    } catch (err) {
+      res.status(500).json({ message: "Failed to save monster", error: err });
+    }
   } else {
-    //Om valideringen misslyckades, skicka en 400-status med felmeddelandet
     res.status(400).json({
-      message: "Valideringsfel vid POST",
-      errors: result.error.errors //Detta innehåller specifika felmeddelanden från zod
+      message: "Validation error",
+      errors: result.error.errors,
     });
-  };
+  }
 });
 
 app.listen(port, () => {
