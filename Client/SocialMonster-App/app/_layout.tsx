@@ -1,23 +1,48 @@
-import { Stack } from "expo-router";
-import TestIcon from "../components/TestIcon";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { Ionicons } from "@expo/vector-icons";
+import { TouchableOpacity, View, Text } from "react-native";
+import HomeScreen from "./Screens/HomeScreen";
+import ProfileScreen from "./Screens/ProfilesScreen";
+
+// Skapa en Drawer Navigator
+const Drawer = createDrawerNavigator();
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen
-        name="index"
+    <Drawer.Navigator
+      screenOptions={({ navigation }) => ({
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => navigation.toggleDrawer()}
+            style={{ marginLeft: 10 }}
+          >
+            <Ionicons name="menu" size={24} color="black" />
+          </TouchableOpacity>
+        ),
+      })}
+    >
+      <Drawer.Screen
+        name="Home"
+        component={HomeScreen}
         options={{
-          headerTitle: "Social monster app",
-          headerLeft: () => <TestIcon />,
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
+          drawerActiveTintColor: "pink", // Färg när Drawer-item är aktiv
+          drawerInactiveTintColor: "gray", // Färg när Drawer-item inte är aktiv
         }}
       />
-      <Stack.Screen
-        name="allMonsterProfiles"
+      <Drawer.Screen
+        name="Profile"
+        component={ProfileScreen}
         options={{
-          headerTitle: "Monster profiles",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),
+          drawerActiveTintColor: "pink", // Färg när Drawer-item är aktiv
+          drawerInactiveTintColor: "gray", // Färg när Drawer-item inte är aktiv
         }}
       />
-      <Stack.Screen name="+not-found" />
-    </Stack>
+    </Drawer.Navigator>
   );
 }
