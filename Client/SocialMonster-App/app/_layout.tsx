@@ -5,14 +5,17 @@ import HomeScreen from "./Screens/HomeScreen";
 import ProfileScreen from "./Screens/ProfilesScreen";
 import { useState } from "react";
 import IndexScreen from "./Screens/IndexScreen";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 // Skapa en Drawer Navigator
 const Drawer = createDrawerNavigator();
 
 export default function RootLayout() {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState<boolean>(true);
+
   return (
-    <>
+    <Provider store={store}>
       {showWelcomeScreen ? (
         <IndexScreen setShowWelcomeScreen={setShowWelcomeScreen} />
       ) : (
@@ -53,6 +56,6 @@ export default function RootLayout() {
           />
         </Drawer.Navigator>
       )}
-    </>
+    </Provider>
   );
 }
