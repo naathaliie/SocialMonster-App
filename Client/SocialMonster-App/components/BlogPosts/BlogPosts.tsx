@@ -79,7 +79,7 @@ export default function BlogPosts() {
 
 const styles = StyleSheet.create({
   BlogPosts: {
-    flex: 2 / 3,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 2,
