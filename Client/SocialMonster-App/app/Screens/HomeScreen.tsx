@@ -1,45 +1,17 @@
+import BlogPosts from "@/components/BlogPosts/BlogPosts";
 import { StyleSheet, Text, View } from "react-native";
-
+import { Image } from "expo-image";
 export default function HomeScreen() {
-  const testData = [
-    {
-      id: 1,
-      title: "Draken från Eldbergen",
-      bodyText:
-        "En gigantisk eldsprutande drake som vakar över de brinnande bergen.",
-    },
-    {
-      id: 2,
-      title: "Skuggvargen",
-      bodyText:
-        "En mystisk varg som smälter in i skuggorna och anfaller när du minst anar det.",
-    },
-    {
-      id: 3,
-      title: "Tornjätten",
-      bodyText:
-        "En kolossal jätte som sägs bygga torn av stenar för att bevaka sitt rike.",
-    },
-    {
-      id: 4,
-      title: "Havshäxan",
-      bodyText:
-        "En slug och kraftfull varelse som lever djupt nere i det mörkaste havet.",
-    },
-    {
-      id: 5,
-      title: "Nattkrälaren",
-      bodyText:
-        "Ett spöklikt väsen som rör sig ljudlöst i natten och samlar på själar.",
-    },
-  ];
   return (
     <View style={styles.HomeScreen}>
-      <View>
-        <Text style={styles.headerText}>Läs alla inlägg</Text>
+      <View style={styles.infoBox}>
+        <Image
+          source={require("../../assets/images/monsters.jpeg")}
+          style={styles.imgStyle}
+          contentFit="fill"
+        />
       </View>
-
-      <View>//Här ska alla inlägg renderas</View>
+      <BlogPosts />
     </View>
   );
 }
@@ -50,8 +22,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 10,
     marginHorizontal: 10,
+    gap: 10,
   },
   headerText: {
     fontSize: 30,
+  },
+
+  infoBox: {
+    height: "30%",
+    width: "100%",
+    alignItems: "center",
+  },
+  imgStyle: {
+    flex: 1,
+    width: "100%",
+    backgroundColor: "#0553",
   },
 });
