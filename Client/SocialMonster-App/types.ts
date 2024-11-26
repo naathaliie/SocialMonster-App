@@ -5,5 +5,5 @@ export type OneMonster = {
   name: string;
   age: number;
   color: string;
-  breed: string;
+  image?: string;
 };
