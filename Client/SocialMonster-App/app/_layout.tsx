@@ -37,6 +37,7 @@ export default function RootLayout() {
               ),
               drawerActiveTintColor: "pink", // Färg när Drawer-item är aktiv
               drawerInactiveTintColor: "gray", // Färg när Drawer-item inte är aktiv
+              headerTitle: "", //Döljer titeln från denna Screen
             }}
           />
           <Drawer.Screen
