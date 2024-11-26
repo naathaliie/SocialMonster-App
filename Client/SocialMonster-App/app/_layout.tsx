@@ -6,7 +6,9 @@ import ProfileScreen from "./Screens/ProfilesScreen";
 import { useState } from "react";
 import IndexScreen from "./Screens/IndexScreen";
 import { Provider } from "react-redux";
-import { store } from "../redux/store";
+import { RootState, store } from "../redux/store";
+import UserIcon from "@/components/UserIcon";
+import { useSelector } from "react-redux";
 
 // Skapa en Drawer Navigator
 const Drawer = createDrawerNavigator();
@@ -14,12 +16,15 @@ const Drawer = createDrawerNavigator();
 export default function RootLayout() {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState<boolean>(true);
 
+  //Komma åt vald användare
+  /*   const currentUser = useSelector((state: RootState) => state.currentuser);
+   */
   return (
     <Provider store={store}>
       {showWelcomeScreen ? (
         <IndexScreen setShowWelcomeScreen={setShowWelcomeScreen} />
       ) : (
-        <Drawer.Navigator
+        <Drawer.Navigator //* LÄGGA I EN EGEN KOMPONENT? */
           screenOptions={({ navigation }) => ({
             headerLeft: () => (
               <TouchableOpacity
@@ -27,6 +32,16 @@ export default function RootLayout() {
                 style={{ marginLeft: 10 }}
               >
                 <Ionicons name="menu" size={24} color="black" />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => {
+                  console.log("Du klickade på profilikonen");
+                }}
+                style={{ marginRight: 10 }}
+              >
+                <UserIcon monsterImage={currentUser.image} size="small" />
               </TouchableOpacity>
             ),
           })}
@@ -44,7 +59,7 @@ export default function RootLayout() {
             }}
           />
           <Drawer.Screen
-            name="Profile"
+            name="Användarprofiler"
             component={ProfileScreen}
             options={{
               drawerIcon: ({ color, size }) => (

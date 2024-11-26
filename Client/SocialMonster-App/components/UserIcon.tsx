@@ -3,9 +3,10 @@ import { View, Text, StyleSheet } from "react-native";
 
 type UserIconProps = {
   monsterImage: string;
+  size: "small" | "large";
 };
 
-export default function UserIcon({ monsterImage }: UserIconProps) {
+export default function UserIcon({ monsterImage, size }: UserIconProps) {
   //Switch för att få ut bilder
 
   function getimage(image: string) {
@@ -26,6 +27,8 @@ export default function UserIcon({ monsterImage }: UserIconProps) {
         return require("../assets/images/subconcious.png");
       case "theodor.png":
         return require("../assets/images/theodor.png");
+      case "GuestUser.png":
+        return require("../assets/images/GuestUser.png");
       default:
         break;
     }
@@ -33,16 +36,26 @@ export default function UserIcon({ monsterImage }: UserIconProps) {
 
   return (
     <View style={styles.container}>
-      <Image source={getimage(monsterImage)} style={styles.imgStyle} />
+      <Image
+        source={getimage(monsterImage)}
+        style={size === "small" ? styles.imgStyleSmall : styles.imgStyleLarge}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {},
-  imgStyle: {
+  imgStyleLarge: {
     height: 100,
     width: 100,
+    backgroundColor: "#0553",
+    borderRadius: 100,
+    margin: 5,
+  },
+  imgStyleSmall: {
+    height: 50,
+    width: 50,
     backgroundColor: "#0553",
     borderRadius: 100,
     margin: 5,
