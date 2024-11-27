@@ -10,10 +10,27 @@ export type OneMonster = {
   image: string;
 };
 
+//För att spara och behålla vald användare
 export type GuestUser = {
   name: string;
   image: string;
 };
 
-//För att spara och behålla vald användare
 export type CurrentUser = OneMonster;
+
+//Alla inlägg
+export type Posts = onePost[];
+
+//Ett inlägg
+export type onePost = {
+  id: number;
+  author: number;
+  title: string;
+  bodyText: string;
+};
+
+//För att kunna skicka med både monster.id och post.id och inte bara en payload
+export type DeletePostPayload = {
+  monsterId: number;
+  postId: number;
+};

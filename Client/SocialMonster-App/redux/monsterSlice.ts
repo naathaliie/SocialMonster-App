@@ -63,7 +63,7 @@ const monsterSlice = createSlice({
     addMonster: (state, action: PayloadAction<OneMonster>) => {
       state.push(action.payload);
     },
-    // Action för att ta bort monster
+    // Action för att ta bort monster (skicka med id därav blir payload number)
     removeMonster: (state, action: PayloadAction<number>) => {
       return state.filter((monster) => monster.id !== action.payload);
     },

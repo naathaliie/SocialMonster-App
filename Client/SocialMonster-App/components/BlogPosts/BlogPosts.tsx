@@ -1,5 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import BlogPostCard from "./BlogPostCard";
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
 
 export default function BlogPosts() {
   const testData = [
@@ -65,13 +67,16 @@ export default function BlogPosts() {
     },
   ];
 
+  //ta in alla inlägg från store
+  const allPosts = useSelector((state: RootState) => state.post);
+
   return (
     <View style={styles.BlogPosts}>
       <Text style={styles.headerText}>Alla inlägg</Text>
       <FlatList
-        data={testData}
+        data={allPosts}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <BlogPostCard oneBlogPost={item} />}
+        renderItem={({ item }) => <BlogPostCard onePost={item} />}
       />
     </View>
   );

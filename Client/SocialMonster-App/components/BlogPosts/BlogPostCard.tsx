@@ -1,17 +1,21 @@
+import { onePost } from "@/types";
 import { StyleSheet, Text, View } from "react-native";
 
 type BlogPostCardProps = {
-  oneBlogPost: { id: number; title: string; bodyText: string };
+  onePost: onePost;
 };
 
-export default function BlogPostCard({ oneBlogPost }: BlogPostCardProps) {
+export default function BlogPostCard({ onePost }: BlogPostCardProps) {
   return (
     <View style={styles.BlogPostCard}>
       <View>
-        <Text style={styles.titleText}>{oneBlogPost.title}</Text>
+        <Text style={styles.titleText}>{onePost.title}</Text>
       </View>
       <View>
-        <Text>{oneBlogPost.bodyText}</Text>
+        <Text>{onePost.bodyText}</Text>
+      </View>
+      <View>
+        <Text>Skrivet av: {onePost.author}</Text>
       </View>
     </View>
   );
