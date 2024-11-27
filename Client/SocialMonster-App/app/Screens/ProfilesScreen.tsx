@@ -4,6 +4,17 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCurrentUser } from "@/redux/currentUserSlice";
 import { useNavigation } from "@react-navigation/native";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
+
+//för att navigatorn inte vill acceptera att vi skickar in "MyPage" i navigation.navigate
+//Utan rader med * blir det en röd linje under, även om det fungerar
+// * Definiera Drawer-parametrarna
+type DrawerParamList = {
+  Profile: undefined;
+  MyPage: undefined;
+};
+
+type NavigationProp = DrawerNavigationProp<DrawerParamList, "Profile">;
 
 export default function ProfileScreen() {
   //Hämta alla monster från monsterSlicen
@@ -16,7 +27,8 @@ export default function ProfileScreen() {
   const dispatch = useDispatch();
 
   // Skapa navigation-instans för att kunna gå till vald profils MyPage
-  const navigation = useNavigation();
+  // *Typa navigation-instansen
+  const navigation = useNavigation<NavigationProp>();
 
   //Funktion för att sätta klickad user till CurrentUser
   function setCurrentUser(id: number) {
