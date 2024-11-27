@@ -67,7 +67,7 @@ export default function BlogPosts() {
 
   return (
     <View style={styles.BlogPosts}>
-      <Text style={styles.headerText}>Inlägg</Text>
+      <Text style={styles.headerText}>Alla inlägg</Text>
       <FlatList
         data={testData}
         keyExtractor={(item) => item.id.toString()}

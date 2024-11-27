@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 
 type UserIconProps = {
   monsterImage: string;
-  size: "small" | "large";
+  size: "xs" | "small" | "large";
 };
 
 export default function UserIcon({ monsterImage, size }: UserIconProps) {
@@ -34,12 +34,17 @@ export default function UserIcon({ monsterImage, size }: UserIconProps) {
     }
   }
 
+  //sätt rätt style
+  const imageStyle =
+    size === "xs"
+      ? styles.imgStyleXs
+      : size === "small"
+      ? styles.imgStyleSmall
+      : styles.imgStyleLarge;
+
   return (
     <View style={styles.container}>
-      <Image
-        source={getimage(monsterImage)}
-        style={size === "small" ? styles.imgStyleSmall : styles.imgStyleLarge}
-      />
+      <Image source={getimage(monsterImage)} style={imageStyle} />
     </View>
   );
 }
@@ -59,5 +64,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#0553",
     borderRadius: 100,
     margin: 5,
+  },
+  imgStyleXs: {
+    height: 30,
+    width: 30,
+    backgroundColor: "#0553",
+    borderRadius: 100,
   },
 });

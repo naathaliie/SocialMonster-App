@@ -3,6 +3,7 @@ import { RootState } from "../../redux/store";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCurrentUser } from "@/redux/currentUserSlice";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ProfileScreen() {
   //Hämta alla monster från monsterSlicen
@@ -14,6 +15,9 @@ export default function ProfileScreen() {
   // Skapa dispatch för att kunna använda reducers från slicenn
   const dispatch = useDispatch();
 
+  // Skapa navigation-instans för att kunna gå till vald profils MyPage
+  const navigation = useNavigation();
+
   //Funktion för att sätta klickad user till CurrentUser
   function setCurrentUser(id: number) {
     //Sortera ut det klickade monstret
@@ -24,6 +28,9 @@ export default function ProfileScreen() {
     if (newCurrentUser) {
       //sätter det klickade monstret som currentUser
       dispatch(updateCurrentUser(newCurrentUser));
+      //Går till newCurrentUsers MyProfile
+      // Navigera till MyPage
+      navigation.navigate("MyPage");
     } else {
       console.error(`MonsterProfil med id: ${id}, hittades inte`);
     }
@@ -43,7 +50,12 @@ export default function ProfileScreen() {
           return (
             <Pressable
               key={monster.id}
-              onPress={() => setCurrentUser(monster.id)}
+              onPress={
+                () =>
+                  setCurrentUser(
+                    monster.id
+                  ) /* här ska vi också navigera oss till MyPage */
+              }
             >
               <UserIcon monsterImage={monster.image} size="large" />
               <Text style={{ textAlign: "center" }}>{monster.name}</Text>

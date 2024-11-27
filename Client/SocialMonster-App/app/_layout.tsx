@@ -9,6 +9,7 @@ import HomeScreen from "./Screens/HomeScreen"; // Importera Home-skärmen
 import ProfileScreen from "./Screens/ProfilesScreen"; // Importera Profile-skärmen
 import { useState } from "react";
 import IndexScreen from "./Screens/IndexScreen";
+import MyPage from "./Screens/MyPage";
 
 // Skapa en Drawer Navigator
 const Drawer = createDrawerNavigator();
@@ -51,10 +52,7 @@ function AppNavigator() {
                 }}
                 style={{ marginRight: 10 }}
               >
-                {/* Visa användarikon om currentUser finns */}
-                {currentUser && (
-                  <UserIcon monsterImage={currentUser.image} size="small" />
-                )}
+                <UserIcon monsterImage={currentUser.image} size="small" />
               </TouchableOpacity>
             ),
           })}
@@ -77,6 +75,17 @@ function AppNavigator() {
             options={{
               drawerIcon: ({ color, size }) => (
                 <Ionicons name="person" size={size} color={color} />
+              ),
+              drawerActiveTintColor: "pink", // Färg när Drawer-item är aktiv
+              drawerInactiveTintColor: "gray", // Färg när Drawer-item inte är aktiv
+            }}
+          />
+          <Drawer.Screen
+            name="MyPage"
+            component={MyPage}
+            options={{
+              drawerIcon: ({ color, size }) => (
+                <UserIcon monsterImage={currentUser.image} size="xs" />
               ),
               drawerActiveTintColor: "pink", // Färg när Drawer-item är aktiv
               drawerInactiveTintColor: "gray", // Färg när Drawer-item inte är aktiv
