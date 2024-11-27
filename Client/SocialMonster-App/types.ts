@@ -11,10 +11,7 @@ export type OneMonster = {
 };
 
 //För att spara och behålla vald användare
-export type GuestUser = {
-  name: string;
-  image: string;
-};
+export type GuestUser = OneMonster;
 
 export type CurrentUser = OneMonster;
 

@@ -1,9 +1,11 @@
 import { CurrentUser, GuestUser, OneMonster } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-//initial state med typ sätter guestUser barar för att jag inte fick det att fungera med null
 const initialUserState: CurrentUser | GuestUser = {
+  id: 0,
   name: "GuestUser",
+  age: 0,
+  color: "none",
   image: "GuestUser.png",
 };
 

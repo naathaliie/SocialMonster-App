@@ -1,7 +1,11 @@
 import BlogPosts from "@/components/BlogPosts/BlogPosts";
 import { StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 export default function HomeScreen() {
+  //Hämta alla poster
+  const allPosts = useSelector((state: RootState) => state.post);
   return (
     <View style={styles.HomeScreen}>
       <View style={styles.infoBox}>
@@ -11,7 +15,7 @@ export default function HomeScreen() {
           contentFit="fill"
         />
       </View>
-      <BlogPosts />
+      <BlogPosts posts={allPosts} />
     </View>
   );
 }
