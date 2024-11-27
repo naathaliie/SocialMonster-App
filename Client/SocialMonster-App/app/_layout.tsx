@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { RootState, store } from "../redux/store"; // Importera Redux store
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, StatusBar } from "react-native";
 import { useSelector } from "react-redux";
 import UserIcon from "@/components/UserIcon"; // Din UserIcon-komponent
 import HomeScreen from "./Screens/HomeScreen"; // Importera Home-skärmen
@@ -18,6 +18,8 @@ export default function App() {
   return (
     // Se till att hela applikationen är omsluten av <Provider>
     <Provider store={store}>
+      <StatusBar barStyle={"dark-content"} backgroundColor={"#ffffff"} />
+
       <AppNavigator />
     </Provider>
   );
