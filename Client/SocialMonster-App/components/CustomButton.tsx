@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   // Stilar för storlek
   xs: {
     width: 50,
-    height: 30,
+    height: 50,
   },
   small: {
     paddingHorizontal: 15,
