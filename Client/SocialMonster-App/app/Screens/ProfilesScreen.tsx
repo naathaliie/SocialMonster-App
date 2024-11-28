@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateCurrentUser } from "@/redux/currentUserSlice";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { useSetChoosenUser } from "@/hooks/useSetChoosenUser";
+import { useState } from "react";
+import { GuestUser, OneMonster } from "@/types";
 
 //för att navigatorn inte vill acceptera att vi skickar in "MyPage" i navigation.navigate
 //Utan rader med * blir det en röd linje under, även om det fungerar
@@ -17,11 +20,22 @@ type DrawerParamList = {
 type NavigationProp = DrawerNavigationProp<DrawerParamList, "Profile">;
 
 export default function ProfileScreen() {
+  //Håll koll på klickat monster
+  const [chosenMonster, setChoosenMonster] = useState<OneMonster | GuestUser>({
+    id: 0,
+    name: "GuestUser",
+    age: 0,
+    color: "none",
+    image: "GuestUser.png",
+  });
+
   //Hämta alla monster från monsterSlicen
   const monsterProfiles = useSelector((state: RootState) => state.monster);
 
   //Hämta currentuser
   const currentUser = useSelector((state: RootState) => state.currentuser);
+  //använder egen hook
+  const setChoosenUser = useSetChoosenUser();
 
   // Skapa dispatch för att kunna använda reducers från slicenn
   const dispatch = useDispatch();
@@ -29,7 +43,7 @@ export default function ProfileScreen() {
   // Skapa navigation-instans för att kunna gå till vald profils MyPage
   // *Typa navigation-instansen
   const navigation = useNavigation<NavigationProp>();
-
+  /* 
   //Funktion för att sätta klickad user till CurrentUser
   function setCurrentUser(id: number) {
     //Sortera ut det klickade monstret
@@ -46,7 +60,7 @@ export default function ProfileScreen() {
     } else {
       console.error(`MonsterProfil med id: ${id}, hittades inte`);
     }
-  }
+  } */
 
   return (
     <View style={styles.container}>
@@ -62,18 +76,34 @@ export default function ProfileScreen() {
           return (
             <Pressable
               key={monster.id}
-              onPress={
-                () =>
-                  setCurrentUser(
-                    monster.id
-                  ) /* här ska vi också navigera oss till MyPage */
+              onPress={() => setChoosenMonster(monster)}
+              style={
+                chosenMonster.id === monster.id
+                  ? styles.choosen
+                  : styles.userIcon
               }
             >
-              <UserIcon monsterImage={monster.image} size="large" />
+              <UserIcon
+                monsterImage={monster.image}
+                size="large"
+                choosen={chosenMonster.id === monster.id ? true : false}
+              />
               <Text style={{ textAlign: "center" }}>{monster.name}</Text>
             </Pressable>
           );
         })}
+      </View>
+      <View>
+        <Pressable
+          onPress={
+            () =>
+              setChoosenUser(
+                chosenMonster
+              ) /* här ska vi också navigera oss till MyPage */
+          }
+        >
+          <Text>Välj monsterprofil</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -102,6 +132,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    padding: 10,
+    padding: 1,
+  },
+  userIcon: {
+    margin: 5,
   },
 });

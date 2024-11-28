@@ -1,7 +1,7 @@
-import { CurrentUser, GuestUser, OneMonster } from "@/types";
+import { GuestUser, OneMonster } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialUserState: CurrentUser | GuestUser = {
+const initialUserState: OneMonster | GuestUser = {
   id: 0,
   name: "GuestUser",
   age: 0,

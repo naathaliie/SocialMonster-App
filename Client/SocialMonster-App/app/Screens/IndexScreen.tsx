@@ -10,10 +10,12 @@ import {
 
 type IndexScreenProps = {
   setShowWelcomeScreen: (value: boolean) => void; // Funktion som tar en boolean och returnerar void
+  setShowChooseYourProfile: (value: boolean) => void; // För att visa väljmonsterprofilsidan efter denna första sida
 };
 
 export default function IndexScreen({
   setShowWelcomeScreen,
+  setShowChooseYourProfile,
 }: IndexScreenProps) {
   return (
     <View style={styles.container}>
@@ -24,7 +26,13 @@ export default function IndexScreen({
         contentFit="cover"
         allowDownscaling={true}
       />
-      <Pressable style={styles.btn} onPress={() => setShowWelcomeScreen(false)}>
+      <Pressable
+        style={styles.btn}
+        onPress={() => {
+          setShowWelcomeScreen(false);
+          setShowChooseYourProfile(true);
+        }}
+      >
         <Text style={styles.btnText}>Gå till appen</Text>
       </Pressable>
     </View>

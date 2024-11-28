@@ -4,11 +4,15 @@ import { View, Text, StyleSheet } from "react-native";
 type UserIconProps = {
   monsterImage: string;
   size: "xs" | "small" | "large";
+  choosen?: boolean;
 };
 
-export default function UserIcon({ monsterImage, size }: UserIconProps) {
+export default function UserIcon({
+  monsterImage,
+  size,
+  choosen,
+}: UserIconProps) {
   //Switch för att få ut bilder
-
   function getimage(image: string) {
     switch (image) {
       case "blue.png":
@@ -43,7 +47,7 @@ export default function UserIcon({ monsterImage, size }: UserIconProps) {
       : styles.imgStyleLarge;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, choosen && styles.choosen]}>
       <Image source={getimage(monsterImage)} style={imageStyle} />
     </View>
   );
@@ -69,6 +73,12 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     backgroundColor: "#0553",
+    borderRadius: 100,
+  },
+  choosen: {
+    backgroundColor: "#1E8A8A",
+    borderColor: "#1E8A8A",
+    borderWidth: 5,
     borderRadius: 100,
   },
 });

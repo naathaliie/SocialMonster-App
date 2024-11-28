@@ -13,8 +13,8 @@ export type OneMonster = {
 //För att spara och behålla vald användare
 export type GuestUser = OneMonster;
 
-export type CurrentUser = OneMonster;
-
+/* export type CurrentUser = OneMonster;
+ */
 //Alla inlägg
 export type Posts = onePost[];
 

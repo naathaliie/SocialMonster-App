@@ -10,6 +10,7 @@ import ProfileScreen from "./Screens/ProfilesScreen"; // Importera Profile-skär
 import { useState } from "react";
 import IndexScreen from "./Screens/IndexScreen";
 import MyPage from "./Screens/MyPage";
+import ChooseYourProfile from "./Screens/ChooseYourProfile";
 
 // Skapa en Drawer Navigator
 const Drawer = createDrawerNavigator();
@@ -28,14 +29,22 @@ export default function App() {
 function AppNavigator() {
   //useState för att visa första sidan när man startar appen
   const [showWelcomeScreeen, setShowWelcomeScreen] = useState<boolean>(true);
-
+  const [showChooseYourProfile, setShowChooseYourProfile] =
+    useState<boolean>(false);
   // Hämta currentUser från Redux state
   const currentUser = useSelector((state: RootState) => state.currentuser);
 
   return (
     <>
       {showWelcomeScreeen ? (
-        <IndexScreen setShowWelcomeScreen={setShowWelcomeScreen} />
+        <IndexScreen
+          setShowWelcomeScreen={setShowWelcomeScreen}
+          setShowChooseYourProfile={setShowChooseYourProfile}
+        />
+      ) : showChooseYourProfile ? (
+        <ChooseYourProfile
+          setShowChooseYourProfile={setShowChooseYourProfile}
+        />
       ) : (
         <Drawer.Navigator
           screenOptions={({ navigation }) => ({
