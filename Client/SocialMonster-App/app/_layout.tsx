@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { RootState, store } from "../redux/store"; // Importera Redux store
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
-import { TouchableOpacity, Text, StatusBar } from "react-native";
+import { TouchableOpacity, Text, StatusBar, Pressable } from "react-native";
 import { useSelector } from "react-redux";
 import UserIcon from "@/components/UserIcon"; // Din UserIcon-komponent
 import HomeScreen from "./Screens/HomeScreen"; // Importera Home-skärmen
@@ -57,15 +57,18 @@ function AppNavigator() {
               </TouchableOpacity>
             ),
             headerRight: () => (
-              <TouchableOpacity
+              <Pressable
                 onPress={() => {
                   console.log("Du klickade på profilikonen");
                 }}
                 style={{ marginRight: 10 }}
               >
                 <UserIcon monsterImage={currentUser.image} size="small" />
-              </TouchableOpacity>
+              </Pressable>
             ),
+            headerStyle: {
+              backgroundColor: "#00E1D3",
+            },
           })}
         >
           <Drawer.Screen

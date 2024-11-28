@@ -3,20 +3,31 @@ import { StyleSheet, Text, View } from "react-native";
 
 type BlogPostCardProps = {
   onePost: onePost;
+  overView?: boolean;
 };
 
-export default function BlogPostCard({ onePost }: BlogPostCardProps) {
+export default function BlogPostCard({ onePost, overView }: BlogPostCardProps) {
   return (
     <View style={styles.BlogPostCard}>
-      <View>
-        <Text style={styles.titleText}>{onePost.title}</Text>
-      </View>
-      <View>
-        <Text>{onePost.bodyText}</Text>
-      </View>
-      <View>
-        <Text>Skrivet av: {onePost.author}</Text>
-      </View>
+      {overView ? (
+        <>
+          <View>
+            <Text style={styles.titleText}>{onePost.title}</Text>
+          </View>
+        </>
+      ) : (
+        <>
+          <View>
+            <Text style={styles.titleText}>{onePost.title}</Text>
+          </View>
+          <View>
+            <Text>{onePost.bodyText}</Text>
+          </View>
+          <View>
+            <Text>Skrivet av: {onePost.author}</Text>
+          </View>
+        </>
+      )}
     </View>
   );
 }

@@ -4,16 +4,19 @@ import { Posts } from "../../types";
 
 type BlogPostProps = {
   posts: Posts;
+  overView?: boolean;
 };
 
-export default function BlogPosts({ posts }: BlogPostProps) {
+export default function BlogPosts({ posts, overView }: BlogPostProps) {
   return (
     <View style={styles.BlogPosts}>
-      <Text style={styles.headerText}>Alla inlägg</Text>
+      <Text style={styles.headerText}>Inlägg</Text>
       <FlatList
         data={posts}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <BlogPostCard onePost={item} />}
+        renderItem={({ item }) => (
+          <BlogPostCard onePost={item} overView={overView} />
+        )}
       />
     </View>
   );
@@ -27,8 +30,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "black",
     borderRadius: 10,
+    marginHorizontal: 10,
   },
   headerText: {
-    fontSize: 30,
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
