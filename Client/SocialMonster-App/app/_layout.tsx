@@ -11,6 +11,7 @@ import { useState } from "react";
 import IndexScreen from "./Screens/IndexScreen";
 import MyPage from "./Screens/MyPage";
 import ChooseYourProfile from "./Screens/ChooseYourProfile";
+import { navigate } from "expo-router/build/global-state/routing";
 
 // Skapa en Drawer Navigator
 const Drawer = createDrawerNavigator();
@@ -60,6 +61,7 @@ function AppNavigator() {
               <Pressable
                 onPress={() => {
                   console.log("Du klickade på profilikonen");
+                  navigation.navigate("Mina sidor");
                 }}
                 style={{ marginRight: 10 }}
               >
@@ -67,7 +69,7 @@ function AppNavigator() {
               </Pressable>
             ),
             headerStyle: {
-              backgroundColor: "#00E1D3",
+              backgroundColor: "#74BFBA",
             },
           })}
         >
@@ -95,7 +97,7 @@ function AppNavigator() {
             }}
           />
           <Drawer.Screen
-            name="MyPage"
+            name="Mina sidor"
             component={MyPage}
             options={{
               drawerIcon: ({ color, size }) => (

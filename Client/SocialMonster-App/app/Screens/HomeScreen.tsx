@@ -8,7 +8,7 @@ export default function HomeScreen() {
   const allPosts = useSelector((state: RootState) => state.post);
   return (
     <View style={styles.HomeScreen}>
-      <StatusBar backgroundColor={"#00E1D3"} />
+      <StatusBar backgroundColor={"#74BFBA"} />
 
       <Image
         source={require("../../assets/images/manyMonsters.jpeg")}
@@ -46,6 +46,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   HomeScreen: {
     flex: 1,
+    backgroundColor: "#74BFBA",
   },
   backgroundImg: {
     flex: 1, // Täcker hela föräldraview
