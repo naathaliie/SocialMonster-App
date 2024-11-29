@@ -8,9 +8,13 @@ import { addPost } from "@/redux/postSlice";
 
 type NewBlogPostModalProps = {
   authorId: number;
+  position: "left" | "right";
 };
 
-export default function NewBlogPostModal({ authorId }: NewBlogPostModalProps) {
+export default function NewBlogPostModal({
+  authorId,
+  position,
+}: NewBlogPostModalProps) {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -36,7 +40,9 @@ export default function NewBlogPostModal({ authorId }: NewBlogPostModalProps) {
   }
 
   return (
-    <View style={styles.container}>
+    <View
+      style={position === "left" ? styles.containerLeft : styles.containerRight}
+    >
       <Portal>
         <Modal
           visible={visible}
@@ -99,7 +105,19 @@ export default function NewBlogPostModal({ authorId }: NewBlogPostModalProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {}, //Stylar endast området runt knappen på sidan som den visas
+  containerLeft: {
+    //Container stylar endast området runt knappen på sidan som den visas samt placering i föräldrakomponenten här: till vänster
+    position: "absolute",
+    bottom: "10%",
+    right: "30%",
+  },
+  containerRight: {
+    //här: till höger
+    position: "absolute",
+    bottom: "10%",
+    left: "30%",
+    backgroundColor: "red",
+  },
   modalContainer: {
     backgroundColor: "white",
     padding: 20,
