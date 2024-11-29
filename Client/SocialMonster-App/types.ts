@@ -24,6 +24,7 @@ export type onePost = {
   author: number;
   title: string;
   bodyText: string;
+  image?: string;
 };
 
 //För att kunna skicka med både monster.id och post.id och inte bara en payload

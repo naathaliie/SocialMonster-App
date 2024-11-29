@@ -1,4 +1,5 @@
 import { onePost } from "@/types";
+import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
 
 type BlogPostCardProps = {
@@ -7,17 +8,47 @@ type BlogPostCardProps = {
 };
 
 export default function BlogPostCard({ onePost, overView }: BlogPostCardProps) {
+  //Switch för att få ut bilder
+  function getimage(image: string) {
+    switch (image) {
+      case "darkForrest.png":
+        return require("../../assets/images/darkForrest.png");
+      case "scaryHand.png":
+        return require("../../assets/images/scaryHand.png");
+      case "witch.png":
+        return require("../../assets/images/witch.png");
+      default:
+        break;
+    }
+  }
+
   return (
     <View style={styles.BlogPostCard}>
       {overView ? (
         <>
-          <View>
-            <Text style={styles.titleText}>{onePost.title}</Text>
+          <View style={styles.overViewContainer}>
+            <View>
+              {onePost.image && (
+                <Image
+                  source={getimage(onePost.image)}
+                  style={styles.postImg}
+                />
+              )}
+            </View>
+            <View style={styles.overViewTextContainer}>
+              <Text
+                style={styles.titleText}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                {onePost.title}
+              </Text>
+            </View>
           </View>
         </>
       ) : (
         <>
-          <View>
+          <View style={styles.postContainer}>
             <Text style={styles.titleText}>{onePost.title}</Text>
           </View>
           <View>
@@ -35,14 +66,28 @@ export default function BlogPostCard({ onePost, overView }: BlogPostCardProps) {
 const styles = StyleSheet.create({
   BlogPostCard: {
     flex: 1,
-    alignItems: "center",
-    marginVertical: 10,
-    marginHorizontal: 10,
     borderWidth: 1,
     borderColor: "black",
-    borderRadius: 10,
-    padding: 10,
-    gap: 5,
+    borderRadius: 20,
+    marginVertical: 10,
+  },
+  overViewContainer: {
+    flexDirection: "row",
+    margin: 10,
+    gap: 10,
+    width: "90%",
+  },
+  postImg: {
+    height: 70,
+    width: 70,
+    backgroundColor: "#0553",
+    borderRadius: 20,
+  },
+  overViewTextContainer: {
+    justifyContent: "center",
+    maxWidth: "85%",
+    minWidth: "65%",
+    margin: 5,
   },
   titleText: {
     fontSize: 20,
@@ -50,4 +95,5 @@ const styles = StyleSheet.create({
   bodyText: {
     fontSize: 15,
   },
+  postContainer: {},
 });

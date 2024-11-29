@@ -18,10 +18,8 @@ const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    // Se till att hela applikationen är omsluten av <Provider>
+    // Se till att hela applikationen är omsluten av <Provider> för att komma åt redux
     <Provider store={store}>
-      <StatusBar barStyle={"dark-content"} backgroundColor={"#ffffff"} />
-
       <AppNavigator />
     </Provider>
   );
@@ -69,7 +67,10 @@ function AppNavigator() {
               </Pressable>
             ),
             headerStyle: {
-              backgroundColor: "#74BFBA",
+              backgroundColor: "white",
+              height: 80,
+              borderBottomWidth: 1,
+              borderBottomColor: "black",
             },
           })}
         >

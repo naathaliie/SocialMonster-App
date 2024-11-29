@@ -8,11 +8,15 @@ type BlogPostProps = {
 };
 
 export default function BlogPosts({ posts, overView }: BlogPostProps) {
+  //Sortera alla posts så att den nyaste visas istället för den första
+  const reversedDirectionPosts = [...posts].reverse();
+  console.log("vad får jag?", reversedDirectionPosts);
+
   return (
     <View style={styles.BlogPosts}>
       <Text style={styles.headerText}>Inlägg</Text>
       <FlatList
-        data={posts}
+        data={reversedDirectionPosts}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <BlogPostCard onePost={item} overView={overView} />
@@ -31,6 +35,7 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderRadius: 10,
     marginHorizontal: 10,
+    margin: 10,
   },
   headerText: {
     fontSize: 20,

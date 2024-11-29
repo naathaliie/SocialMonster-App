@@ -32,18 +32,8 @@ export default function ChooseYourProfile({
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={"#00E1D3"} />
-      <Image
-        source={require("../../assets/images/chooseAProfileImg.jpeg")}
-        style={styles.imgStyle}
-        contentFit="cover"
-        allowDownscaling={true}
-      />
-      <View style={styles.infoContainer}>
+      <View style={styles.topInfoContainer}>
         <Text style={styles.infoTextHeader}>Välj monster</Text>
-        <Text style={styles.infoText}>
-          Du kan ändra monster i inloggat läge under monsterprofiler
-        </Text>
       </View>
 
       <View style={styles.profilesContainer}>
@@ -71,12 +61,15 @@ export default function ChooseYourProfile({
 
       <View style={styles.btnContainer}>
         <CustomButton
-          title="Välj och gå vidare"
+          title="Logga in"
           color="primary"
           shape="square"
           size="large"
           onPress={() => setShowChooseYourProfile(false)}
         />
+        <Text style={styles.infoText}>
+          Du kan ändra monster i inloggat läge under monsterprofiler
+        </Text>
       </View>
     </View>
   );
@@ -85,9 +78,7 @@ export default function ChooseYourProfile({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    gap: 50,
-    backgroundColor: "#00E1D3",
+    justifyContent: "space-evenly",
   },
   imgStyle: {
     flex: 1, // Täcker hela föräldraview
@@ -97,18 +88,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#0553",
     opacity: 0.3,
   },
-  infoContainer: {
-    alignItems: "center",
-    gap: 10,
-  },
+  topInfoContainer: {},
   infoTextHeader: {
     fontSize: 35,
     textAlign: "center",
     fontWeight: "bold",
-  },
-  infoText: {
-    fontSize: 20,
-    textAlign: "center",
   },
   profilesContainer: {},
   profilesBox: {
@@ -120,5 +104,12 @@ const styles = StyleSheet.create({
   btnContainer: {
     justifyContent: "center",
     alignItems: "center",
+    marginTop: -50,
+  },
+  bottomInfoContainer: {},
+  infoText: {
+    fontSize: 13,
+    textAlign: "center",
+    paddingHorizontal: 50,
   },
 });

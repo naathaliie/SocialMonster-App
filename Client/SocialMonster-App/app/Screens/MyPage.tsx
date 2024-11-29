@@ -43,15 +43,12 @@ export default function MyPage() {
           <Button title="mina favoriter" />
         </View>
 
-        <View>
-          {showMyPosts && getPosts ? (
-            <BlogPosts posts={getPosts} />
-          ) : (
-            <Text>Du har inte skrivit några inlägg än</Text>
-          )}
+        <View style={styles.myBlogPostsContainer}>
+          {showMyPosts && getPosts ? <BlogPosts posts={getPosts} /> : <></>}
         </View>
+
         <View style={styles.blogModal}>
-          <NewBlogPostModal />
+          <NewBlogPostModal authorId={currentUser.id} />
         </View>
       </View>
     </PaperProvider>
@@ -65,6 +62,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 10,
     gap: 10,
+  },
+  myBlogPostsContainer: {
+    height: "80%",
+    width: "95%",
   },
   blogModal: {
     position: "absolute",

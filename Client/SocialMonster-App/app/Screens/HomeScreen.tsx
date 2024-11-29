@@ -8,37 +8,15 @@ export default function HomeScreen() {
   const allPosts = useSelector((state: RootState) => state.post);
   return (
     <View style={styles.HomeScreen}>
-      <StatusBar backgroundColor={"#74BFBA"} />
-
-      <Image
-        source={require("../../assets/images/manyMonsters.jpeg")}
-        style={styles.backgroundImg}
-        contentFit="cover"
-        allowDownscaling={true}
-      />
-
       <View style={styles.infoBox}>
         <Image
           source={require("../../assets/images/monsters.png")}
           style={styles.imgStyle}
         />
       </View>
-      <View>
-        <Text>
-          Här kanske det skall vara lite information Här kanske det skall vara
-          lite information
-        </Text>
-        <Text>Här kanske det skall vara lite information</Text>
-        <Text>Här kanske det skall vara lite information</Text>
-        <Text>Här kanske det skall vara lite information</Text>
-        <Text>Här kanske det skall vara lite information</Text>
-      </View>
+      <View></View>
       <BlogPosts posts={allPosts} overView={true} />
-      <View>
-        <Text>Här kanske det skall vara lite information</Text>
-        <Text>Här kanske det skall vara lite information</Text>
-        <Text>Här kanske det skall vara lite information</Text>
-      </View>
+      <View></View>
     </View>
   );
 }
@@ -46,15 +24,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   HomeScreen: {
     flex: 1,
-    backgroundColor: "#74BFBA",
-  },
-  backgroundImg: {
-    flex: 1, // Täcker hela föräldraview
-    width: "100%",
-    height: "100%",
-    position: "absolute", // Gör att bilden fyller hela skärme
-    backgroundColor: "#0553",
-    opacity: 0,
   },
   headerText: {
     fontSize: 30,

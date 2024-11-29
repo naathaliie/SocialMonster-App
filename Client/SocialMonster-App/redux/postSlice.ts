@@ -10,21 +10,25 @@ const initialPostState: Posts = [
     title: "Drakens Förbannelse",
     bodyText:
       "Draken har burit på sin förbannelse i århundraden. En gång en varelse av ljus och styrka, men nu tvingad att leva i skuggan av sina egna handlingar. Hans kraft över elden är inte bara en gåva, utan en förbannelse som bränner hans själ varje gång han använder den.",
+    image: "darkForrest.png",
   },
   {
     id: 2,
     author: 1,
-    title: "Flammorna från Helvetet",
+    title:
+      "Flammorna från HelvetetHelvetetFlammorna från HelvetetHelvetetFlammornaHelvetetHelvetetFlammorna från HelvetetHelvetet",
     bodyText:
       "När Draken slår sina vingar, sprakar luften av eld och aska. Han har lärt sig att kontrollera denna kraft, men ibland känns det som om elden är hans enda vän. Den fördärvar allt den rör vid, och ändå känner han sig dragen till dess hetta, som om han har blivit en del av den.",
+    image: "scaryHand.png",
   },
 
   {
     id: 3,
     author: 2,
-    title: "Tigerns Mörka Själsresa",
+    title: "Tigerns Mörka SjälsresaSjälsresa",
     bodyText:
       "Tiger har vandrat genom djungeln under mörka nätter, där skuggor rör sig som levande varelser. Han har stött på varelser som han inte kan förklara, med ögon som glöder av en ockult kraft. Dessa väsen viskar hans namn, men Tiger vet inte om de är hans fiender eller hans enda chans till överlevnad.",
+    image: "witch.png",
   },
   {
     id: 4,
@@ -32,6 +36,7 @@ const initialPostState: Posts = [
     title: "Jaktens Ondska",
     bodyText:
       "En natt i djungeln kände Tiger en närvaro bakom sig. En skepnad, lika stor som han, men med mörka ögon som reflekterade inget ljus. Det var som om skuggorna själva jagade honom. I denna natt lärde Tiger sig att det finns saker i mörkret som inte kan besegras med styrka.",
+    image: "scaryHand.png",
   },
   {
     id: 5,
@@ -39,6 +44,7 @@ const initialPostState: Posts = [
     title: "Den Ockulta Styrkan",
     bodyText:
       "Tiger har ofta undrat om det finns en dolda krafter som styr hans väg i livet. Hans instinkter är skarpa, men ibland känns det som om någon eller något annat styr honom från skuggorna. I djungeln finns en kraft som är äldre än själva naturen – och den är inte alltid vänlig.",
+    image: "darkForrest.png",
   },
 
   {
@@ -47,6 +53,7 @@ const initialPostState: Posts = [
     title: "Ugglans Visdom",
     bodyText:
       "Ugglan har flugit genom nattens mörker i tusentals år. Hon har sett världen förändras, men en sak har alltid varit konstant: skuggorna som rör sig på kanten av synfältet. Hon vet att dessa skuggor inte är vanliga väsen. De är de forntida krafter som vakar över skogen, och de väntar på att någon ska väcka dem.",
+    image: "witch.png",
   },
 
   {
@@ -55,6 +62,7 @@ const initialPostState: Posts = [
     title: "Lövens Rike av Skuggor",
     bodyText:
       "Löven har varit kung i sitt rike i många år, men det finns något som inte känns rätt. Skuggor har börjat röra sig vid gränsen till hans territorium. Varelser, från en annan värld, viskar hans namn i vinden. De säger att hans tid som ledare är över, och en mörk makt kommer att ta hans plats.",
+    image: "darkForrest.png",
   },
   {
     id: 8,
@@ -62,6 +70,7 @@ const initialPostState: Posts = [
     title: "Skuggornas Väktare",
     bodyText:
       "Löven har stött på skepnader som inte är av denna värld. Dessa varelser från de mörkaste hörnen av skogen har länge hållit sitt avstånd. Men nu är de nära, och Löven känner en uråldrig kraft som växer i mörkret. Är de hans fiender, eller har han blivit utvald för att möta något mycket större än han själv?",
+    image: "witch.png",
   },
   {
     id: 9,
@@ -84,6 +93,7 @@ const initialPostState: Posts = [
     title: "Månens Förbannelse",
     bodyText:
       "När fullmånen stiger på himlen, känner Vargen en förändring inom sig. Hans syn blir skarpare, hans krafter starkare, men samtidigt dras han mot något han inte kan förklara. En urgammal förbannelse verkar vara förknippad med hans blodslinje, och Vargen är fast besluten att förstå den innan den slukar honom.",
+    image: "witch.png",
   },
   {
     id: 12,
@@ -91,6 +101,7 @@ const initialPostState: Posts = [
     title: "Flockens Mörka Hemlighet",
     bodyText:
       "Vargen har upptäckt att flocken bär på en hemlighet som går tillbaka i tiden. Det är en hemlighet som involverar mörka krafter som styr deras öde. Vargen måste nu ta ett svårt beslut: att avslöja sanningen för flocken, eller att låta denna mörka kraft förbli fördold för evigt.",
+    image: "scaryHand.png",
   },
 
   {
@@ -99,6 +110,7 @@ const initialPostState: Posts = [
     title: "Havsörnens Mörka Horisont",
     bodyText:
       "Havsörnen har flugit genom stormar och vindar, men det finns något annorlunda med den här gången. Horisonten är mörkare än vanligt, och vinden bär med sig viskningar från en annan värld. Hon känner närvaron av något onaturligt som dröjer sig kvar vid kanten av hennes synfält, som en mörk skugga som inte går att få bort.",
+    image: "scaryHand.png",
   },
   {
     id: 14,
@@ -106,6 +118,7 @@ const initialPostState: Posts = [
     title: "Fjädrarnas Ockulta Kraft",
     bodyText:
       "Havsörnen har alltid trott på sina fjädrars styrka, men efter en mystisk upplevelse börjar hon undra om det finns något mer till hennes krafter. När hon flög genom en storm, kände hon en kall hand på sin vinge. Det var som om någon annan styrde hennes rörelser, och hon undrar nu om hennes fjädrar är besatta av en okänd kraft.",
+    image: "witch.png",
   },
   {
     id: 15,
@@ -113,6 +126,7 @@ const initialPostState: Posts = [
     title: "Vinden från De Dödas Rike",
     bodyText:
       "Havsörnen har alltid flugit med vinden, men den här gången känns det annorlunda. Vinden bär med sig dofter från en annan värld, en värld som inte borde existera. Hon hör viskningar som inte kommer från någon levande varelse, och hon undrar om vinden har blivit en port till en plats där döda själar vilar.",
+    image: "scaryHand.png",
   },
 
   {
@@ -121,6 +135,7 @@ const initialPostState: Posts = [
     title: "Björnens Mörka Återkomst",
     bodyText:
       "Björnens vintersömn har alltid varit en tid för vila, men den här gången är annorlunda. Under sin sömn har han drömt om en värld fylld av skuggor och onaturliga varelser. Nu när han vaknar, känns världen kallare, och han vet att något mörkt har hänt medan han var borta.",
+    image: "darkForrest.png",
   },
   {
     id: 17,
@@ -128,6 +143,7 @@ const initialPostState: Posts = [
     title: "Vildmarkens Förbannelse",
     bodyText:
       "Björnens jakt på föda leder honom till en plats som han alltid har undvikit. Där, djupt inne i skogen, finns en gammal tempelruin som bär på mörka krafter. Björnen känner sig dragen dit, men han vet också att detta kan vara början på hans undergång.",
+    image: "witch.png",
   },
   {
     id: 18,
@@ -135,6 +151,7 @@ const initialPostState: Posts = [
     title: "Vårens Mörka Skepnad",
     bodyText:
       "Björnens känslor när våren närmar sig är blandade. Snön smälter och världen vaknar till liv, men i skuggorna rör sig något annat. Något ondskefullt som inte hör hemma i denna värld. Björnens sinnen är skärpta, och han vet att mörka krafter håller på att göra sitt intåg.",
+    image: "darkForrest.png",
   },
 ];
 
@@ -145,6 +162,7 @@ const postSlice = createSlice({
     //Action för att lägga till en post
     addPost: (state, action: PayloadAction<onePost>) => {
       state.push(action.payload);
+      console.log("Du postade ett nytt inlägg");
     },
     //Action för att radera en post (skicka med en egen typ DeletePostpayload för att kunna skicka med både monster.id och post.id)
     deletePost: (state, action: PayloadAction<DeletePostPayload>) => {
