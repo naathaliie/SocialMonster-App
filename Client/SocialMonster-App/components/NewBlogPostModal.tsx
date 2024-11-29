@@ -6,6 +6,8 @@ import { onePost } from "@/types";
 import { useDispatch } from "react-redux";
 import { addPost } from "@/redux/postSlice";
 
+/**********PLACERA DENNA MODAL FRISTÅENDE LÄNGST UPP I KOMPONENTEN DU VILL ANVÄNDA DEN I (INTE INUTI TEX EN <VIEW></VIEW>)**********/
+
 type NewBlogPostModalProps = {
   authorId: number;
   position: "left" | "right";
@@ -108,15 +110,15 @@ const styles = StyleSheet.create({
   containerLeft: {
     //Container stylar endast området runt knappen på sidan som den visas samt placering i föräldrakomponenten här: till vänster
     position: "absolute",
-    bottom: "10%",
-    right: "30%",
+    top: "90%",
+    left: "0%",
   },
   containerRight: {
     //här: till höger
     position: "absolute",
-    bottom: "10%",
-    left: "30%",
-    backgroundColor: "red",
+    top: "90%",
+    right: "0%",
+    zIndex: 10, // Högre zIndex för att knappen ska vara överst alla förälderns andra barnkomponenter (annars hamnar den under)
   },
   modalContainer: {
     backgroundColor: "white",

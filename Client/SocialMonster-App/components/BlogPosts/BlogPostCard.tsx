@@ -1,6 +1,7 @@
 import { onePost } from "@/types";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "expo-router";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 type BlogPostCardProps = {
   onePost: onePost;
@@ -8,6 +9,8 @@ type BlogPostCardProps = {
 };
 
 export default function BlogPostCard({ onePost, overView }: BlogPostCardProps) {
+  const navigation = useNavigation(); // Hämta navigation-objektet från useNavigation
+
   //Switch för att få ut bilder
   function getimage(image: string) {
     switch (image) {
@@ -22,8 +25,12 @@ export default function BlogPostCard({ onePost, overView }: BlogPostCardProps) {
     }
   }
 
+  function readThisPost() {
+    console.log("du klickade på readThisPost");
+  }
+
   return (
-    <View style={styles.BlogPostCard}>
+    <Pressable onPress={() => readThisPost()} style={styles.BlogPostCard}>
       {overView ? (
         <>
           <View style={styles.overViewContainer}>
@@ -43,6 +50,9 @@ export default function BlogPostCard({ onePost, overView }: BlogPostCardProps) {
               >
                 {onePost.title}
               </Text>
+              <Text style={styles.authorText}>
+                Skrivet av: {onePost.author}
+              </Text>
             </View>
           </View>
         </>
@@ -59,7 +69,7 @@ export default function BlogPostCard({ onePost, overView }: BlogPostCardProps) {
           </View>
         </>
       )}
-    </View>
+    </Pressable>
   );
 }
 
@@ -70,6 +80,7 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderRadius: 20,
     marginVertical: 10,
+    marginHorizontal: 10,
   },
   overViewContainer: {
     flexDirection: "row",
@@ -91,6 +102,10 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 20,
+  },
+  authorText: {
+    fontSize: 13,
+    fontStyle: "italic",
   },
   bodyText: {
     fontSize: 15,

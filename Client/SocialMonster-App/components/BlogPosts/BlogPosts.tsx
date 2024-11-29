@@ -10,7 +10,6 @@ type BlogPostProps = {
 export default function BlogPosts({ posts, overView }: BlogPostProps) {
   //Sortera alla posts så att den nyaste visas istället för den första
   const reversedDirectionPosts = [...posts].reverse();
-  console.log("vad får jag?", reversedDirectionPosts);
 
   return (
     <View style={styles.BlogPosts}>

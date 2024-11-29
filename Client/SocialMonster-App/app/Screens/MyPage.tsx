@@ -1,7 +1,6 @@
 import BlogPostModal from "@/components/NewBlogPostModal";
 import BlogPosts from "@/components/BlogPosts/BlogPosts";
 import { RootState } from "@/redux/store";
-import { CurrentUser, Posts } from "@/types";
 import getCurrentUsersPosts from "@/utils/getCurrentUsersPosts";
 import { current } from "@reduxjs/toolkit";
 import { useMemo, useState } from "react";
@@ -10,12 +9,13 @@ import { PaperProvider } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { UseSelector } from "react-redux";
 import NewBlogPostModal from "@/components/NewBlogPostModal";
+import { OneMonster, Posts } from "@/types";
 
 export default function MyPage() {
   const [showMyPosts, setShowMyPosts] = useState<boolean>(false);
 
   //Hämta vald användarprofil
-  const currentUser: CurrentUser = useSelector(
+  const currentUser: OneMonster = useSelector(
     (state: RootState) => state.currentuser
   );
   const allPosts: Posts = useSelector((state: RootState) => state.post);
@@ -29,29 +29,25 @@ export default function MyPage() {
   /*   const getPosts = getCurrentUsersPosts(allPosts, currentUser.id);
    */
   return (
-    <PaperProvider>
-      <View style={styles.container}>
-        <Text>Välkommen {currentUser.name}!</Text>
+    <View style={styles.container}>
+      <NewBlogPostModal authorId={currentUser.id} position="right" />
 
-        <View>
-          <Button
-            title="mina inlägg"
-            onPress={() => {
-              setShowMyPosts(!showMyPosts);
-            }}
-          />
-          <Button title="mina favoriter" />
-        </View>
+      <Text>Välkommen {currentUser.name}!</Text>
 
-        <View style={styles.myBlogPostsContainer}>
-          {showMyPosts && getPosts ? <BlogPosts posts={getPosts} /> : <></>}
-        </View>
-
-        <View style={styles.blogModal}>
-          <NewBlogPostModal authorId={currentUser.id} />
-        </View>
+      <View>
+        <Button
+          title="mina inlägg"
+          onPress={() => {
+            setShowMyPosts(!showMyPosts);
+          }}
+        />
+        <Button title="mina favoriter" />
       </View>
-    </PaperProvider>
+
+      <View style={styles.myBlogPostsContainer}>
+        {showMyPosts && getPosts ? <BlogPosts posts={getPosts} /> : <></>}
+      </View>
+    </View>
   );
 }
 
@@ -66,10 +62,5 @@ const styles = StyleSheet.create({
   myBlogPostsContainer: {
     height: "80%",
     width: "95%",
-  },
-  blogModal: {
-    position: "absolute",
-    top: "85%",
-    left: "80%",
   },
 });
