@@ -12,15 +12,19 @@ import IndexScreen from "./Screens/IndexScreen";
 import MyPage from "./Screens/MyPage";
 import ChooseYourProfile from "./Screens/ChooseYourProfile";
 import { navigate } from "expo-router/build/global-state/routing";
+import { PaperProvider } from "react-native-paper";
+import OnePostScreen from "./Screens/OnePostScreen";
 
 // Skapa en Drawer Navigator
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    // Se till att hela applikationen är omsluten av <Provider> för att komma åt redux
+    // Se till att hela applikationen är omsluten av <Provider> för att komma åt redux och bla NewPostModule
     <Provider store={store}>
-      <AppNavigator />
+      <PaperProvider>
+        <AppNavigator />
+      </PaperProvider>
     </Provider>
   );
 }
